@@ -1441,8 +1441,14 @@ function genReport(){
 /* ══════════════════════════════════════════════
    LOGIN SYSTEM — Open beta, localStorage-based
 ══════════════════════════════════════════════ */
-const LO_KEY='ahn_user',LO_USERS_KEY='ahn_users';
+const LO_KEY='ahn_user',LO_USERS_KEY='ahn_users',LO_GUEST_KEY='ahn_is_guest';
 let loCurrentTab='signin';
+let isGuest=localStorage.getItem(LO_GUEST_KEY)==='true';
+
+function loSetGuestMode(enabled){
+  isGuest=!!enabled;
+  localStorage.setItem(LO_GUEST_KEY,isGuest?'true':'false');
+}
 
 function loTab(tab){
   loCurrentTab=tab;const isIn=tab==='signin';
@@ -1486,10 +1492,15 @@ async function loSubmit(){
   }
 }
 
-function loGuest(){loEnterApp({name:'Guest',email:'',company:'Exploring',role:'guest'});}
+function loGuest(){
+  loSetGuestMode(true);
+  loEnterApp({name:'Guest',email:'',company:'Exploring',role:'guest'});
+}
 function loForgot(){loSetError('Password reset coming soon. Try "Create Account" for a fresh start.');}
 
 function loEnterApp(user){
+  const guestMode=user.role==='guest'||isGuest;
+  loSetGuestMode(guestMode);
   localStorage.setItem(LO_KEY,JSON.stringify(user));
   const init=user.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2)||'?';
   document.getElementById('user-avatar').textContent=init;
@@ -1499,10 +1510,15 @@ function loEnterApp(user){
   document.getElementById('user-badge').style.display='flex';
   const overlay=document.getElementById('login-overlay');
   overlay.classList.add('out');setTimeout(()=>{overlay.style.display='none';},420);
-  if(user.role!=='guest'){const h=new Date().getHours();const gr=h<12?'Good morning':h<17?'Good afternoon':'Good evening';document.getElementById('page-sub').textContent=gr+', '+user.name.split(' ')[0];}
+  if(guestMode){
+    goTab('analyze');
+  } else {
+    const h=new Date().getHours();const gr=h<12?'Good morning':h<17?'Good afternoon':'Good evening';document.getElementById('page-sub').textContent=gr+', '+user.name.split(' ')[0];
+  }
 }
 
 function loSignOut(){
+  loSetGuestMode(false);
   localStorage.removeItem(LO_KEY);
   document.getElementById('user-menu').classList.remove('open');
   document.getElementById('user-badge').style.display='none';
