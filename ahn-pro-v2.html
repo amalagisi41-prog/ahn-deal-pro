@@ -6,7 +6,7 @@
 <title>Deal Analyzer Pro — Artisan Home Network</title>
 
 <!-- PWA essentials -->
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#c9a96e">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -55,6 +55,14 @@ body{font-family:"Inter",-apple-system,sans-serif;background:var(--navy);color:v
 .hdr-sub{font-size:0.65rem;color:var(--muted);font-weight:500;letter-spacing:0.03em;text-transform:uppercase}
 .hdr-brand{display:flex;align-items:center;gap:7px;text-decoration:none}
 .hdr-icon{width:32px;height:32px;background:var(--card2);border-radius:8px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center}
+.app-cta-row{position:sticky;top:0;z-index:20;padding:8px 2px 10px;background:var(--navy)}
+.app-add-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:11px 12px;border-radius:var(--r2);background:linear-gradient(135deg,var(--teal),var(--teal2));border:none;font-family:inherit;font-size:0.78rem;font-weight:800;color:var(--navy);cursor:pointer;letter-spacing:-0.01em;-webkit-tap-highlight-color:transparent;box-shadow:0 6px 16px rgba(0,0,0,0.2)}
+.app-add-btn:active{opacity:0.9}
+.settings-toolbar{display:flex;align-items:center;gap:8px;padding:10px 0 8px}
+.settings-toggle{background:rgba(255,255,255,0.06);border:1px solid var(--border2);border-radius:999px;padding:7px 12px;font-family:inherit;font-size:0.72rem;font-weight:700;color:var(--off);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.settings-summary{font-size:0.7rem;color:var(--muted);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.settings-panel{display:block}
+.settings-panel.hidden{display:none}
 
 /* ── SCROLL BODY ── */
 .body{flex:1;overflow-y:auto;padding:0 14px;padding-bottom:calc(var(--tab-h)+20px)}
@@ -121,7 +129,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .stctrl{display:flex;align-items:center;gap:9px}
 .sbtn{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border2);background:var(--card2);color:var(--white);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.1s;flex-shrink:0;-webkit-tap-highlight-color:transparent}
 .sbtn:active{background:var(--teal);border-color:var(--teal)}
-input[type=number]{-moz-appearance:textfield;background:none;border:none;outline:none;font-family:inherit;font-size:0.9rem;font-weight:700;color:var(--white);text-align:center;width:70px;padding:0;font-variant-numeric:tabular-nums}
+input[type=number]{-moz-appearance:textfield;appearance:none;background:none;border:none;outline:none;font-family:inherit;font-size:0.9rem;font-weight:700;color:var(--white);text-align:center;width:70px;padding:0;font-variant-numeric:tabular-nums}
 input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 input[type=number]:focus{color:var(--teal)}
 .unit{font-size:0.75rem;color:var(--muted);font-weight:600;margin-left:-6px}
@@ -131,7 +139,7 @@ input[type=number]:focus{color:var(--teal)}
 .exrow:last-child{border-bottom:none}
 .exlbl{font-size:0.74rem;font-weight:500;color:var(--muted)}
 .exwrap{display:flex;align-items:center;gap:4px}
-.exinp{background:rgba(255,255,255,0.07);border:1px solid var(--border2);border-radius:6px;padding:5px 8px;font-family:inherit;font-size:0.76rem;font-weight:600;color:var(--white);text-align:right;width:88px;outline:none;-moz-appearance:textfield;transition:border-color 0.15s}
+.exinp{background:rgba(255,255,255,0.07);border:1px solid var(--border2);border-radius:6px;padding:5px 8px;font-family:inherit;font-size:0.76rem;font-weight:600;color:var(--white);text-align:right;width:88px;outline:none;appearance:none;-moz-appearance:textfield;transition:border-color 0.15s}
 .exinp:focus{border-color:var(--teal)}
 .exinp::-webkit-inner-spin-button{-webkit-appearance:none}
 .exunit{font-size:0.7rem;color:var(--muted);font-weight:500}
@@ -170,7 +178,7 @@ input[type=number]:focus{color:var(--teal)}
 .cmp-inputs{padding:11px 13px;display:flex;flex-direction:column;gap:7px}
 .cmp-fi{display:flex;flex-direction:column;gap:3px}
 .cmp-fi label{font-size:0.62rem;font-weight:600;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase}
-.cmp-inp{background:rgba(255,255,255,0.07);border:1px solid var(--border2);border-radius:6px;padding:7px 10px;font-family:inherit;font-size:0.82rem;font-weight:700;color:var(--white);width:100%;outline:none;-moz-appearance:textfield;transition:border-color 0.15s}
+.cmp-inp{background:rgba(255,255,255,0.07);border:1px solid var(--border2);border-radius:6px;padding:7px 10px;font-family:inherit;font-size:0.82rem;font-weight:700;color:var(--white);width:100%;outline:none;appearance:none;-moz-appearance:textfield;transition:border-color 0.15s}
 .cmp-inp:focus{border-color:var(--teal)}
 .cmp-inp::-webkit-inner-spin-button{-webkit-appearance:none}
 .cmp-results{padding:0 13px 11px}
@@ -199,7 +207,7 @@ input[type=number]:focus{color:var(--teal)}
 .mode-card-body{padding:11px 14px;display:flex;flex-direction:column;gap:7px}
 .mode-inp-row{display:flex;flex-direction:column;gap:3px}
 .mode-inp-lbl{font-size:0.6rem;font-weight:600;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase}
-.mode-inp{background:rgba(255,255,255,0.07);border:1px solid var(--border2);border-radius:6px;padding:7px 10px;font-family:inherit;font-size:0.82rem;font-weight:700;color:var(--white);width:100%;outline:none;-moz-appearance:textfield}
+.mode-inp{background:rgba(255,255,255,0.07);border:1px solid var(--border2);border-radius:6px;padding:7px 10px;font-family:inherit;font-size:0.82rem;font-weight:700;color:var(--white);width:100%;outline:none;appearance:none;-moz-appearance:textfield}
 .mode-inp:focus{border-color:var(--teal)}
 .mode-inp::-webkit-inner-spin-button{-webkit-appearance:none}
 .delta-card{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;margin-bottom:12px}
@@ -500,7 +508,7 @@ input[type=hidden]{display:none}
     <div class="hdr-title" id="page-title">Analyze</div>
     <div class="hdr-sub" id="page-sub">Deal Analyzer Pro</div>
   </div>
-  <a class="hdr-brand" href="https://artisanhomenetwork.com" target="_blank">
+  <a class="hdr-brand" href="./" onclick="goHome();return false;">
     <div class="hdr-icon"><svg width="14" height="14" viewBox="0 0 22 22" fill="none"><path d="M11 2L2 8.5V20h6v-6h6v6h6V8.5L11 2Z" fill="white" opacity="0.9"/></svg></div>
   </a>
   <!-- User badge (shown after login) -->
@@ -521,6 +529,10 @@ input[type=hidden]{display:none}
 </div>
 
 <div class="body" id="main-body">
+
+<div class="app-cta-row">
+  <button type="button" class="app-add-btn" onclick="addPropAndOpenPortfolio()">+ Add Properties</button>
+</div>
 
 <!-- ══════════════════ ANALYZE TAB ══════════════════ -->
 <div id="tab-analyze">
@@ -778,8 +790,22 @@ input[type=hidden]{display:none}
       <div class="pt-stat"><div class="ptv" id="pt-equity">—</div><div class="ptl">Equity</div></div>
     </div>
   </div>
+  <div class="icard" id="port-form-card" style="display:none;margin-bottom:12px">
+    <div class="sec-hdr" style="padding:12px 15px 0">Add Property</div>
+    <div style="padding:12px 15px 15px">
+      <div class="exrow"><span class="exlbl">Property Name</span><input type="text" class="exinp" id="port-form-name" placeholder="Property 3" style="width:140px"></div>
+      <div class="exrow"><span class="exlbl">Purchase Price</span><input type="number" class="exinp" id="port-form-price" value="450000" style="width:110px"></div>
+      <div class="exrow"><span class="exlbl">NOI / yr</span><input type="number" class="exinp" id="port-form-noi" value="24000" style="width:100px"></div>
+      <div class="exrow"><span class="exlbl">Cash Flow / mo</span><input type="number" class="exinp" id="port-form-cf" value="800" style="width:100px"></div>
+      <div class="exrow"><span class="exlbl">Equity</span><input type="number" class="exinp" id="port-form-equity" value="180000" style="width:110px"></div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button type="button" class="pdf-btn" onclick="savePropertyFromForm()" style="flex:1;margin:0">Save Property</button>
+        <button type="button" class="advbtn" onclick="hidePropertyForm()" style="flex:0 0 auto;margin:0;padding:11px 12px">Cancel</button>
+      </div>
+    </div>
+  </div>
   <div id="port-list"></div>
-  <button class="port-add" onclick="addProp()">+ Add Property</button>
+  <button class="port-add" onclick="openAddPropertyForm()">+ Add Property</button>
 </div>
 
 <!-- ══════════════════ REPORT TAB ══════════════════ -->
@@ -937,6 +963,11 @@ input[type=hidden]{display:none}
 
 <!-- ══════════════════ SETTINGS TAB ══════════════════ -->
 <div id="tab-settings" class="hidden">
+  <div class="settings-toolbar">
+    <button type="button" class="settings-toggle" id="settings-toggle-btn" onclick="toggleSettingsPanel()">⚙ Settings</button>
+    <div class="settings-summary" id="settings-summary">Loading defaults…</div>
+  </div>
+  <div id="settings-panel" class="settings-panel">
 
   <!-- Platform Identity -->
   <div class="sec">
@@ -1049,6 +1080,8 @@ input[type=hidden]{display:none}
     <span style="color:rgba(255,255,255,0.15)">© 2025 · All rights reserved</span>
   </div>
 
+  </div>
+  </div>
 </div><!-- /tab-settings -->
 
 </div><!-- /body -->
@@ -1132,6 +1165,8 @@ function goTab(t){
   if(t==='portfolio')renderPortfolio();
   if(t==='settings')initSettings();
 }
+function goHome(){goTab('analyze');}
+function addPropAndOpenPortfolio(){goTab('portfolio'); openAddPropertyForm();}
 
 /* ── ANALYZE MODE ── */
 let analyzeMode='ltl';
@@ -1289,11 +1324,40 @@ function cSL(){
 
 /* ── PORTFOLIO ── */
 let portfolio=[];let portId=1;
-function addProp(){
-  portfolio.push({id:portId++,name:'Property '+portId,price:450000,equity:180000,noi:24000,cf:800,rate:7.25,loan:270000});
-  renderPortfolio();
+const PORTFOLIO_KEY='ahn_saved';
+function loadPortfolio(){
+  const raw=localStorage.getItem(PORTFOLIO_KEY);
+  if(raw){try{const parsed=JSON.parse(raw);portfolio=Array.isArray(parsed)?parsed:[];}catch{portfolio=[];}}
+  portId=portfolio.reduce((n,p)=>Math.max(n,Number(p.id)||0),0)+1;
 }
-function delProp(id){portfolio=portfolio.filter(p=>p.id!==id);renderPortfolio();}
+function savePortfolio(){localStorage.setItem(PORTFOLIO_KEY, JSON.stringify(portfolio));}
+function openAddPropertyForm(){goTab('portfolio'); showPropertyForm();}
+function showPropertyForm(){
+  const card=document.getElementById('port-form-card');
+  if(card) card.style.display='block';
+  const name=document.getElementById('port-form-name');
+  if(name){name.focus();name.select();}
+}
+function hidePropertyForm(){const card=document.getElementById('port-form-card');if(card)card.style.display='none';}
+function savePropertyFromForm(){
+  const name=document.getElementById('port-form-name')?.value?.trim();
+  const price=parseFloat(document.getElementById('port-form-price')?.value);
+  const noi=parseFloat(document.getElementById('port-form-noi')?.value);
+  const cf=parseFloat(document.getElementById('port-form-cf')?.value);
+  const equity=parseFloat(document.getElementById('port-form-equity')?.value);
+  if(!name){alert('Please enter a property name.'); return;}
+  portfolio.push({id:portId++,name,price:Number.isFinite(price)?price:450000,equity:Number.isFinite(equity)?equity:180000,noi:Number.isFinite(noi)?noi:24000,cf:Number.isFinite(cf)?cf:800,rate:7.25,loan:Number.isFinite(price)&&Number.isFinite(equity)?price-equity:270000});
+  savePortfolio();
+  renderPortfolio();
+  hidePropertyForm();
+  document.getElementById('port-form-name').value='';
+  document.getElementById('port-form-price').value='450000';
+  document.getElementById('port-form-noi').value='24000';
+  document.getElementById('port-form-cf').value='800';
+  document.getElementById('port-form-equity').value='180000';
+}
+function addProp(){openAddPropertyForm();}
+function delProp(id){portfolio=portfolio.filter(p=>p.id!==id);savePortfolio();renderPortfolio();}
 function renderPortfolio(){
   const list=document.getElementById('port-list');
   if(!portfolio.length){list.innerHTML='<div style="text-align:center;padding:32px 16px;font-size:.8rem;color:var(--muted)">No properties yet.<br>Add one below.</div>';document.getElementById('pt-noi').textContent='—';document.getElementById('pt-cf').textContent='—';document.getElementById('pt-value').textContent='—';document.getElementById('pt-equity').textContent='—';return;}
@@ -1537,7 +1601,7 @@ document.addEventListener('click',e=>{
 /* ── INIT ── */
 window.addEventListener('DOMContentLoaded',()=>{
   ['ls-price','ls-dpct','ls-rent','ls-hold','fs-price','fs-arv','fs-rehab'].forEach(id=>{const e=document.getElementById(id);if(e)pF(e);});
-  cLTL();renderPortfolio();
+  loadPortfolio();cLTL();renderPortfolio();
   // Auto-login if session exists
   const session=localStorage.getItem(LO_KEY);
   if(session){try{loEnterApp(JSON.parse(session));}catch(e){localStorage.removeItem(LO_KEY);}}
@@ -1558,6 +1622,8 @@ function initSettings(){
   const count = Object.keys(savedProps||{}).length;
   const el = document.getElementById('set-saved-count');
   if(el) el.textContent = count + ' propert' + (count===1?'y':'ies');
+  renderSettingsSummary();
+  renderSettingsPanelState();
 }
 
 function loadSettings(){
@@ -1580,6 +1646,33 @@ function loadSettings(){
     if(s.vac){const e=document.getElementById('l-vac');if(e)e.value=s.vac;}
     if(s.appr){const e=document.getElementById('l-appr');if(e)e.value=s.appr;}
   } catch(e){}
+  renderSettingsSummary();
+}
+
+function renderSettingsSummary(){
+  const rate=parseFloat(document.getElementById('set-rate')?.value||'7.25');
+  const down=parseFloat(document.getElementById('set-down')?.value||'25');
+  const term=parseInt(document.getElementById('l-term')?.value||'30',10) || 30;
+  const summary=document.getElementById('settings-summary');
+  if(summary){
+    const r=Number.isFinite(rate)?rate:7.25;
+    const d=Number.isFinite(down)?down:25;
+    summary.textContent=`Rate: ${r.toFixed(2)}% · Down: ${d.toFixed(0)}% · Term: ${term}yr`;
+  }
+}
+
+function renderSettingsPanelState(){
+  const panel=document.getElementById('settings-panel');
+  const btn=document.getElementById('settings-toggle-btn');
+  const isCollapsed = localStorage.getItem('ahn_settings_panel') === 'collapsed';
+  if(panel){panel.classList.toggle('hidden',isCollapsed);}
+  if(btn){btn.textContent=isCollapsed?'⚙ Settings':'⚙ Hide Settings';}
+}
+
+function toggleSettingsPanel(){
+  const next = localStorage.getItem('ahn_settings_panel') === 'collapsed' ? 'expanded' : 'collapsed';
+  localStorage.setItem('ahn_settings_panel', next);
+  renderSettingsPanelState();
 }
 
 function saveSettings(){
@@ -1615,6 +1708,7 @@ function saveSettings(){
   if(s.vac){const e=document.getElementById('l-vac');if(e)e.value=s.vac;}
   if(s.appr){const e=document.getElementById('l-appr');if(e)e.value=s.appr;}
   cLTL();
+  renderSettingsSummary();
 
   // Flash confirmation
   const btn = document.querySelector('button[onclick="saveSettings()"]');
@@ -2272,7 +2366,7 @@ function calcMCF(price,down,rate,term,rent,tax,ins,mgmtP,maint,hoa,vac){
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
+    navigator.serviceWorker.register('./sw.js')
       .then(() => console.log('DealPro SW registered'))
       .catch(err => console.log('SW error:', err));
   });
