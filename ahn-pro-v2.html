@@ -65,7 +65,7 @@ body{font-family:"Inter",-apple-system,sans-serif;background:var(--navy);color:v
 .settings-panel.hidden{display:none}
 
 /* ── SCROLL BODY ── */
-.body{flex:1;overflow-y:auto;padding:0 14px;padding-bottom:calc(var(--tab-h)+20px)}
+.body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;padding:0 14px;padding-bottom:calc(var(--tab-h)+20px)}
 .body::-webkit-scrollbar{display:none}
 
 /* ── TAB STRIP (top nav) ── */
@@ -254,8 +254,9 @@ input[type=number]:focus{color:var(--teal)}
 .cta-arr{width:32px;height:32px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--navy);font-size:0.95rem;font-weight:800}
 
 /* ── BOTTOM TAB ── */
-.btab{height:calc(var(--tab-h) + var(--sab));flex-shrink:0;background:var(--navy2);border-top:1px solid var(--border2);display:flex;align-items:flex-start;justify-content:space-around;padding:0 8px;padding-bottom:var(--sab)}
-.bti{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 12px;border-radius:9px;cursor:pointer;transition:all 0.15s;text-decoration:none;flex:1;-webkit-tap-highlight-color:transparent;border:none;background:none;font-family:inherit}
+.btab{height:calc(var(--tab-h) + var(--sab));flex-shrink:0;background:var(--navy2);border-top:1px solid var(--border2);display:flex;align-items:flex-start;justify-content:space-around;padding:0 4px;padding-bottom:var(--sab);overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.btab::-webkit-scrollbar{display:none}
+.bti{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 8px;border-radius:9px;cursor:pointer;transition:all 0.15s;text-decoration:none;flex:1;min-width:52px;-webkit-tap-highlight-color:transparent;border:none;background:none;font-family:inherit}
 .bti:active{background:rgba(255,255,255,0.05)}
 .bti-icon{width:22px;height:22px}
 .bti-icon path,.bti-icon circle,.bti-icon rect,.bti-icon polyline,.bti-icon line{stroke:var(--muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke 0.15s}
@@ -1009,8 +1010,12 @@ input[type=hidden]{display:none}
         </div>
       <div style="font-size:0.72rem;color:var(--muted);line-height:1.6;margin-bottom:10px">Enter your Anthropic Claude API key to enable live analysis from the browser. Without a key, the app shows sample fallback listings.</div>
       <div class="exrow"><span class="exlbl">Claude API Key</span><input type="password" class="exinp" id="set-claude-key" placeholder="sk-..." style="width:180px"></div>
-            <span style="font-size:0.82rem;font-weight:700;color:var(--off)">Live MLS Integration</span>
-          </div>
+      </div>
+
+      <!-- Live MLS Integration -->
+      <div style="padding:14px 15px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <span style="font-size:0.82rem;font-weight:700;color:var(--off)">Live MLS Integration</span>
           <span style="font-size:0.6rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--amber);background:rgba(240,180,41,0.12);padding:3px 9px;border-radius:20px">Pro · Coming Soon</span>
         </div>
         <div style="font-size:0.72rem;color:var(--muted);line-height:1.6;margin-bottom:10px">Connect your MLS API credentials for real-time listing data, live comps, and actual days-on-market. Available as a Pro tier upgrade.</div>
@@ -1648,6 +1653,8 @@ function loadSettings(){
   } catch(e){}
   renderSettingsSummary();
 }
+
+function previewSettings(){renderSettingsSummary();}
 
 function renderSettingsSummary(){
   const rate=parseFloat(document.getElementById('set-rate')?.value||'7.25');
